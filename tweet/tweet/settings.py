@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(t$$dr+9w9*81-dtwd8n7@iarzgnnjj*g*mcw!u8ra&6xp6k6j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', 'GipuPress.onrender.com')]
 
 
 # Application definition
@@ -127,6 +127,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 
 
