@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GipuPress — Reset Password</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --muted:#9aa6b2;
+      --accent:#00e5ff;
+      --accent-2:#ff2d95;
+    }
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,229,255,0.04), transparent),
+        radial-gradient(900px 450px at 90% 90%, rgba(255,45,149,0.03), transparent),
+        var(--bg);
+      color:#e6eef6;
+      min-height:100vh;
+    }
+    .navbar-dark .navbar-nav .nav-link{color:rgba(230,238,246,0.75);font-weight:600;}
+    .navbar-dark .navbar-nav .nav-link:hover{color:var(--accent);}
+    .brand{font-weight:800;letter-spacing:0.6px;color:var(--accent);font-size:1.15rem;}
+    .form-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      backdrop-filter:blur(6px);
+      border-radius:14px;
+      padding:2rem;
+      box-shadow:0 8px 30px rgba(2,6,23,0.6);
+      max-width:480px;
+      margin:auto;
+    }
+    label{font-weight:600;margin-bottom:.4rem;}
+    .form-control{
+      background-color:var(--card);
+      border:1px solid rgba(255,255,255,0.1);
+      color:#e6eef6;
+    }
+    .form-control:focus{
+      box-shadow:0 0 0 .2rem rgba(0,229,255,.25);
+      border-color:var(--accent);
+    }
+    .btn-accent{
+      background:linear-gradient(90deg,var(--accent),#6ff5ff33);
+      color:#042026;
+      font-weight:700;
+      border-radius:10px;
+      padding:0.7rem 1.2rem;
+      border:none;
+      width:100%;
+    }
+    .btn-accent:hover{transform:translateY(-3px);}
+    footer{
+      padding:1.2rem 0;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.02);
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark fixed-top bg-transparent">
+    <div class="container py-3 d-flex justify-content-between align-items-center flex-nowrap">
+      <div class="d-flex align-items-center gap-3 flex-shrink-1">
+        <div class="brand">GipuPress</div>
+        <div class="feature-badge d-none d-md-inline text-muted small">Dark • Clean • Modern</div>
+      </div>
+      <div class="flex-shrink-0">
+        <ul class="nav flex-row">
+          <li class="nav-item ms-3"><a class="nav-link" href="login.html">Log In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- RESET FORM -->
+  <main class="d-flex align-items-center justify-content-center" style="padding-top:8rem;padding-bottom:3rem;">
+    <div class="form-card w-100">
+      <h2 class="mb-4 text-center" style="color:var(--accent);font-weight:700;">Reset Your Password</h2>
+      <form id="resetForm" method="POST" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-4">
+          <label for="newpass" class="form-label">New Password</label>
+          <input type="password" class="form-control" id="newpass" name="newpass" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Reset Password</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-transparent mt-4">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+      <div>
+        <strong>GipuPress</strong> — Crafted for storytellers.<br>
+        <small>Created by Nazmul Hamim</small>
+      </div>
+      <div class="text-end small">
+        © <span id="year"></span> GipuPress • 
+        <a href="#" style="color:var(--muted); text-decoration:underline;">Privacy</a> • 
+        <a href="#" style="color:var(--muted); text-decoration:underline;">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form=document.getElementById('resetForm');
+    form.addEventListener('submit',function(e){
+      const email=document.getElementById('email').value.trim();
+      const newpass=document.getElementById('newpass').value.trim();
+      if(!email || !newpass){
+        
+        alert('Both Email and New Password are required.');
+        return;
+      }
+      // Proceed with AJAX or POST logic
+    });
+  </script>
+</body>
+</html>

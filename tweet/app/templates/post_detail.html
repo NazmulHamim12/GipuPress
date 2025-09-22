@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ post.heading }} — GipuPress</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --muted:#9aa6b2;
+      --accent:#00e5ff;
+      --accent-2:#ff2d95;
+      --red:#ff4c4c;
+    }
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,229,255,0.04), transparent),
+        radial-gradient(900px 450px at 90% 90%, rgba(255,45,149,0.03), transparent),
+        var(--bg);
+      color:#e6eef6;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* NAVBAR */
+    .navbar-dark .navbar-nav .nav-link{color:rgba(230,238,246,0.85);font-weight:600;}
+    .navbar-dark .navbar-nav .nav-link:hover{color:var(--accent);}
+    .brand{font-weight:800;color:var(--accent);font-size:1.25rem;}
+
+    /* POST BOX */
+    .post-box{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,0.05);
+      backdrop-filter:blur(6px);
+      border-radius:14px;
+      padding:2rem;
+      max-width:700px;
+      margin:6rem auto 2rem auto;
+      box-shadow:0 8px 30px rgba(2,6,23,0.6);
+    }
+    .post-box h2{
+      color:var(--accent);
+      font-weight:700;
+      text-align:center;
+      margin-bottom:0.75rem;
+    }
+    .post-meta{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.9rem;
+      margin-bottom:1.5rem;
+    }
+
+    /* BUTTONS */
+    .btn-back{
+      background:linear-gradient(90deg,var(--accent),#6ff5ff33);
+      color:#042026;
+      font-weight:600;
+      border-radius:8px;
+      padding:0.5rem 1rem;
+      text-decoration:none;
+    }
+    .btn-like{
+      background-color:transparent;
+      border:1px solid var(--red);
+      color:var(--red);
+      font-weight:600;
+      border-radius:8px;
+      padding:0.5rem 1rem;
+    }
+    .btn-like:hover{background-color:var(--red);color:#fff;}
+
+    /* FOOTER */
+    footer{
+      margin-top:auto;
+      padding:1.2rem 0;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.02);
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark fixed-top bg-transparent">
+    <div class="container py-3 d-flex justify-content-between align-items-center">
+      <div class="brand">GipuPress</div>
+      <div>
+        <a href="{% url 'explore' %}" class="btn btn-back">⬅ Back to Explore</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- POST CONTENT -->
+  <main class="post-box">
+    <h2>{{ post.heading }}</h2>
+    <div class="post-meta">Posted by {{ post.user.name }}</div>
+
+    <div class="mb-4">
+      <p>{{ post.content|linebreaks }}</p>
+    </div>
+
+    <form action="{% url 'like_post' post.id %}" method="post" class="text-center">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-like">
+        ❤️ Like ({{ post.like_count }})
+      </button>
+    </form>
+  </main>
+
+
+  <footer>
+    <strong>GipuPress</strong> — Crafted for storytellers.<br>
+    <small>Created by Nazmul Hamim</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
