@@ -1,13 +1,14 @@
 from django.db import models
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
-# Create your models here.
+
 
 class Account(models.Model):
     name=models.CharField(max_length=100)
     email=models.EmailField()
     password=models.CharField(max_length=100)
-    photo=models.ImageField(upload_to='img/',null=True, blank=True)
+    photo = CloudinaryField('image', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -35,4 +36,5 @@ class Like(models.Model):
         unique_together = ("user", "post")  # একজন ইউজার একবারই like দিতে পারবে
 
     def __str__(self):
+
         return f"{self.user.name} liked {self.post.id}"
