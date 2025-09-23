@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'cloudinary',
-    'cloudinary_storage',
+    #'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -137,8 +137,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Media settings
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIA_URL = '/media/'
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+#MEDIA_URL = '/media/'
 
 cloudinary.config(
     
@@ -146,6 +146,7 @@ cloudinary.config(
     api_key='992345457916696',
     api_secret='nLqOhgRUHDTHkCCvvHLkFZzN1ow',
 )
+
 
 
 
