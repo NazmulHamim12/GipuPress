@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.auth.hashers import make_password,check_password
 from .models import Account,Post,Like
+from django.http import JsonResponse
 # Create your views here.
 
 def sing_up_page(request):
@@ -9,15 +10,16 @@ def sing_up_page(request):
         email=request.POST.get('email')
         password=request.POST.get('password')
         photo=request.FILES.get('photo')
-        print(name,email,password)
-        
+
         Account.objects.create(
             name=name,
             email=email,
             password=make_password(password),
             photo=photo
         )
-        
+        # signup done → go to login page
+        return redirect('login')
+
     return render(request,'sing.html')
 
 
@@ -34,11 +36,13 @@ def login(request):
         if check_password(raw_password, user.password):
             # login success -> set session
             request.session['user_id'] = user.id
-            return redirect('profile', user_id=user.id)
+            # login done → go to explore page
+            return redirect('explore')
         else:
             return render(request, 'log.html', {'error': 'Password wrong'})
 
     return render(request, 'log.html')
+
 
 
 
@@ -126,7 +130,7 @@ def create_post(request, user_id):
 def like_post(request, post_id):
     logged_id = request.session.get('user_id')
     if not logged_id:
-        return redirect('login')
+        return JsonResponse({'error': 'login required'}, status=403)
 
     post = get_object_or_404(Post, id=post_id)
     user = get_object_or_404(Account, id=logged_id)
@@ -134,8 +138,14 @@ def like_post(request, post_id):
     like, created = Like.objects.get_or_create(user=user, post=post)
     if not created:  # already liked → unlike
         like.delete()
+        liked = False
+    else:
+        liked = True
 
-    return redirect("explore")
+    # নতুন like count হিসাব
+    count = Like.objects.filter(post=post).count()
+
+    return JsonResponse({'liked': liked, 'like_count': count})
 
     
     
