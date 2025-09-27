@@ -6,6 +6,39 @@
   <title>{{ post.heading }} — GipuPress</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.like-form').submit(function(e){
+        e.preventDefault(); // page reload বন্ধ
+        var form = $(this);
+        var postId = form.data('post-id');
+        var csrftoken = form.find('input[name="csrfmiddlewaretoken"]').val();
+
+        $.ajax({
+            url: '/app/like/' + postId + '/',  // view এর url
+            type: 'POST',
+            headers: {'X-CSRFToken': csrftoken},
+            success: function(response){
+                // Like count update
+                var countSpan = form.find('.like-count');
+                countSpan.text(response.like_count);
+
+                // Button style toggle
+                if(response.liked){
+                    form.find('button').addClass('btn-danger').removeClass('btn-outline-danger');
+                } else {
+                    form.find('button').addClass('btn-outline-danger').removeClass('btn-danger');
+                }
+            },
+            error: function(xhr){
+                alert('Error: ' + (xhr.responseJSON?.error || 'Something went wrong'));
+            }
+        });
+    });
+});
+</script>
+
   <style>
     :root{
       --bg:#0b0f14;
@@ -106,12 +139,13 @@
       <p>{{ post.content|linebreaks }}</p>
     </div>
 
-    <form action="{% url 'like_post' post.id %}" method="post" class="text-center">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-like">
-        ❤️ Like ({{ post.like_count }})
-      </button>
-    </form>
+ <form class="like-form" data-post-id="{{ post.id }}" style="display:inline;">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-outline-danger">
+    ❤️ Like (<span class="like-count">{{ post.like_count }}</span>)
+  </button>
+</form>
+
   </main>
 
 
