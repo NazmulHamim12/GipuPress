@@ -58,8 +58,8 @@
       <form id="loginForm" method="POST" novalidate>
           {% csrf_token %}
         <div class="mb-3">
-          <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
+          <label for="name" class="form-label">Email</label>
+          <input type="email" class="form-control" id="name" name="email" required>
         </div>
         <div class="mb-4">
           <label for="password" class="form-label">Password</label>
@@ -95,7 +95,7 @@
       const name=document.getElementById('name').value.trim();
       const password=document.getElementById('password').value.trim();
       if(!name||!password){
-        alert('Both Name and Password are required.');
+        alert('Both Email and Password are required.');
         return;
       }
       // here you can proceed with AJAX or actual POST logic
