@@ -173,8 +173,14 @@ def update_post(request, post_id):
     return render(request, "update.html", {"post": post})
             
             
-            
-            
+def use_pro(request,user_id):
+    user = get_object_or_404(Account, id=user_id)
+    posts = Post.objects.filter(user=user).order_by("-created_at")
+
+    return render(request, 'user_profile.html', {
+        'profile_user': user,   # profile_owner
+        'posts': posts
+    })     
             
             
             
@@ -183,3 +189,4 @@ def update_post(request, post_id):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, "post_detail.html", {"post": post})
+
