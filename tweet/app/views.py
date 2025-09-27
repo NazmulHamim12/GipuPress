@@ -2,46 +2,48 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.auth.hashers import make_password,check_password
 from .models import Account,Post,Like
 from django.http import JsonResponse
+from django.db import IntegrityError
 # Create your views here.
 
 def sing_up_page(request):
     if request.method == 'POST':
-        name=request.POST.get('name')
-        email=request.POST.get('email')
-        password=request.POST.get('password')
-        photo=request.FILES.get('photo')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        photo = request.FILES.get('photo')
 
-        Account.objects.create(
-            name=name,
-            email=email,
-            password=make_password(password),
-            photo=photo
-        )
-        # signup done → go to login page
-        return redirect('login')
+        try:
+            Account.objects.create(
+                name=name,
+                email=email,
+                password=make_password(password),
+                photo=photo
+            )
+            return redirect('login')
+        except IntegrityError:
+            return render(request, 'sing.html', {'error': 'This email is already registered!'})
 
-    return render(request,'sing.html')
+    return render(request, 'sing.html')
 
 
 def login(request):
     if request.method == "POST":
-        name = request.POST.get('name')
+        email = request.POST.get('email')   # email নিলাম
         raw_password = request.POST.get('password')
 
         try:
-            user = Account.objects.get(name=name)
+            user = Account.objects.get(email=email)  
         except Account.DoesNotExist:
-            return render(request, 'log.html', {'error': 'Name not found'})
+            return render(request, 'log.html', {'error': 'Email not found'})
 
         if check_password(raw_password, user.password):
-            # login success -> set session
             request.session['user_id'] = user.id
-            # login done → go to explore page
             return redirect('explore')
         else:
             return render(request, 'log.html', {'error': 'Password wrong'})
 
     return render(request, 'log.html')
+
 
 
 
@@ -173,14 +175,8 @@ def update_post(request, post_id):
     return render(request, "update.html", {"post": post})
             
             
-def use_pro(request,user_id):
-    user = get_object_or_404(Account, id=user_id)
-    posts = Post.objects.filter(user=user).order_by("-created_at")
-
-    return render(request, 'user_profile.html', {
-        'profile_user': user,   # profile_owner
-        'posts': posts
-    })     
+            
+            
             
             
             
@@ -190,3 +186,16 @@ def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, "post_detail.html", {"post": post})
 
+
+
+
+
+def use_pro(request,user_id):
+    user = get_object_or_404(Account, id=user_id)
+    posts = Post.objects.filter(user=user).order_by("-created_at")
+
+    return render(request, 'user_profile.html', {
+        'profile_user': user,   # profile_owner
+        'posts': posts
+    })
+     
