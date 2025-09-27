@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 
 class Account(models.Model):
     name=models.CharField(max_length=100)
-    email=models.EmailField()
+    email=models.EmailField(unique=True)
     password=models.CharField(max_length=100)
     photo = CloudinaryField('image', blank=True, null=True)
     
@@ -38,3 +38,4 @@ class Like(models.Model):
     def __str__(self):
 
         return f"{self.user.name} liked {self.post.id}"
+
