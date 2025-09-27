@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-site-verification" content="UZoM0oxmlRE1fopLUe7V1g-HRXxz62UgGzxSywDo7m8" />
-  <title>GipuPress — Home</title>
+  <title>GipuPress — হোম</title>
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
+   
     :root{
       --bg: #0b0f14;
       --card: #0f1720;
@@ -19,53 +19,26 @@
       --glass: rgba(255,255,255,0.03);
     }
     html,body{height:100%;}
-    body{
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(0,229,255,0.04), transparent),
+    body{font-family:'Inter',system-ui; background:radial-gradient(1200px 600px at 10% 10%, rgba(0,229,255,0.04), transparent),
                   radial-gradient(900px 450px at 90% 90%, rgba(255,45,149,0.03), transparent),
-                  var(--bg);
-      color: #e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-    .navbar-dark .navbar-nav .nav-link{
-      color: rgba(230,238,246,0.75);
-      font-weight:600;
-    }
+                  var(--bg); color:#e6eef6;}
+    .navbar-dark .navbar-nav .nav-link{color:rgba(230,238,246,0.75); font-weight:600;}
     .navbar-dark .navbar-nav .nav-link:hover{color:var(--accent);}    
-    .brand{
-      font-weight:800; letter-spacing:0.6px; color:var(--accent);
-      font-size:1.15rem;
-    }
-    .hero{
-      min-height:62vh; display:flex; align-items:center; justify-content:center; padding:4rem 1.25rem;
-    }
-    .glass-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.04);
-      backdrop-filter: blur(6px);
-      border-radius:14px; padding:2rem; box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-    }
+    .brand{font-weight:800; letter-spacing:0.6px; color:var(--accent); font-size:1.15rem;}
+    .hero{min-height:62vh; display:flex; align-items:center; justify-content:center; padding:4rem 1.25rem;}
+    .glass-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); backdrop-filter:blur(6px); border-radius:14px; padding:2rem; box-shadow:0 8px 30px rgba(2,6,23,0.6);}
     h1.lead-title{font-size:2.1rem; line-height:1.05; margin-bottom:0.6rem;}
     p.lead-sub{color:var(--muted); margin-bottom:1.6rem}
-    .btn-accent{
-      background: linear-gradient(90deg, var(--accent), #6ff5ff33);
-      color:#042026; font-weight:700; border-radius:10px; padding:0.7rem 1.2rem; border: none;
-      box-shadow: 0 8px 18px rgba(0,229,255,0.06), 0 2px 6px rgba(0,0,0,0.6);
-    }
-    .btn-outline-glow{
-      border: 1px solid rgba(255,255,255,0.06); color:var(--accent); background:transparent; font-weight:700; border-radius:10px; padding:0.65rem 1.15rem;
-    }
-    .btn-accent:hover{transform: translateY(-3px);}
+    .btn-accent{background:linear-gradient(90deg, var(--accent), #6ff5ff33); color:#042026; font-weight:700; border-radius:10px; padding:0.7rem 1.2rem; border:none;}
+    .btn-outline-glow{border:1px solid rgba(255,255,255,0.06); color:var(--accent); background:transparent; font-weight:700; border-radius:10px; padding:0.65rem 1.15rem;}
+    .btn-accent:hover{transform:translateY(-3px);}
     .btn-outline-glow:hover{background:rgba(0,229,255,0.03);}
-    .feature-badge{font-size:.8rem; padding:.35rem .6rem; background:rgba(255,255,255,0.02); border-radius:999px; color:var(--muted); border:1px solid rgba(255,255,255,0.02)}
-    .post-card{background:var(--card); border-radius:12px; padding:1rem; border:1px solid rgba(255,255,255,0.02)}
+    .feature-badge{font-size:.8rem; padding:.35rem .6rem; background:rgba(255,255,255,0.02); border-radius:999px; color:var(--muted);}
+    .post-card{background:var(--card); border-radius:12px; padding:1rem;}
     footer{padding:1.2rem 0; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02);}
     .accent-underline{position:relative; display:inline-block;}
-    .accent-underline:after{content:''; position:absolute; left:0; bottom:-6px; height:6px; width:60%; background: linear-gradient(90deg,var(--accent),var(--accent-2)); opacity:0.85; border-radius:4px; transform:skewX(-8deg);} 
-    @media (max-width:576px){
-      h1.lead-title{font-size:1.6rem}
-    }
+    .accent-underline:after{content:''; position:absolute; left:0; bottom:-6px; height:6px; width:60%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); opacity:0.85; border-radius:4px; transform:skewX(-8deg);} 
+    @media (max-width:576px){h1.lead-title{font-size:1.6rem}}
   </style>
 </head>
 <body>
@@ -74,12 +47,12 @@
     <div class="container py-3 d-flex justify-content-between align-items-center flex-nowrap">
       <div class="d-flex align-items-center gap-3 flex-shrink-1">
         <div class="brand">GipuPress</div>
-        <div class="feature-badge d-none d-md-inline">Dark • Clean • Modern</div>
+        <div class="feature-badge d-none d-md-inline">ডার্ক • ক্লিন • আধুনিক</div>
       </div>
       <div class="flex-shrink-0">
         <ul class="nav flex-row">
-          <li class="nav-item"><a class="nav-link" href="app">Sign Up</a></li>
-          <li class="nav-item ms-3"><a class="nav-link" href="app/log">Log In</a></li>
+          <li class="nav-item"><a class="nav-link" href="app">Sing up</a></li>
+          <li class="nav-item ms-3"><a class="nav-link" href="app/log/">Log in</a></li>
         </ul>
       </div>
     </div>
@@ -91,19 +64,19 @@
       <div class="glass-card mt-5">
         <div class="row align-items-center">
           <div class="col-lg-7">
-            <h1 class="lead-title">Create stories people <span class="accent-underline">can't ignore</span></h1>
-            <p class="lead-sub">GipuPress is a minimal, community-first blog platform. Built with a moody dark theme and a sharp neon accent so your content and CTAs pop. Readers remember the vibe — and your writers will too.</p>
+            <h1 class="lead-title">গল্প লিখুন, যা মানুষ <span class="accent-underline">ভুলতে পারবে না</span></h1>
+            <p class="lead-sub">GipuPress হলো একটি মিনিমাল, কমিউনিটি-ফার্স্ট ব্লগ প্ল্যাটফর্ম। ডার্ক থিম আর নিওন অ্যাকসেন্টে বানানো — যাতে আপনার কন্টেন্ট ও বার্তা উজ্জ্বলভাবে ফুটে ওঠে। পাঠক মনে রাখবে অনুভূতি, আর লেখকরাও।</p>
             <div class="d-flex gap-3">
-              <a href="app" class="btn btn-accent">Sign Up — Start Writing</a>
-              <a href="app/log" class="btn btn-outline-glow">Log In — Member Access</a>
+              <a href="app" class="btn btn-accent">Sing up</a>
+              <a href="app/log/" class="btn btn-outline-glow">Log in</a>
             </div>
-            <div class="mt-3 text-muted small">No credit card • Fast onboarding • Mobile-friendly</div>
+            <div class="mt-3 text-muted small">কোনো কার্ড লাগবে না • দ্রুত অনবোর্ডিং • মোবাইল-ফ্রেন্ডলি</div>
           </div>
           <div class="col-lg-5 d-none d-lg-block">
             <div class="post-card">
-              <h6 style="color:var(--muted); font-weight:700;">Featured draft</h6>
-              <h5 style="margin-top:.4rem">How to make small moments feel epic</h5>
-              <p style="color:var(--muted); font-size:.95rem">A short storytelling guide for writers who want sharper hooks and cleaner endings. <span style="color:var(--accent); font-weight:700">Read preview →</span></p>
+              <h6 style="color:var(--muted); font-weight:700;">বাছাইকৃত খসড়া</h6>
+              <h5 style="margin-top:.4rem">ছোট মুহূর্তকে কীভাবে মহাকাব্যের মতো লাগানো যায়</h5>
+              <p style="color:var(--muted); font-size:.95rem">একটি ছোট গল্প বলার গাইড, যারা ধারালো সূচনা আর পরিষ্কার সমাপ্তি চান তাদের জন্য। <span style="color:var(--accent); font-weight:700">প্রিভিউ পড়ুন →</span></p>
             </div>
           </div>
         </div>
@@ -112,20 +85,20 @@
       <div class="row mt-4">
         <div class="col-md-4 mt-3">
           <div class="post-card">
-            <h6 style="color:var(--accent);">Audience-first</h6>
-            <p style="color:var(--muted);">A clean reader view focused on typography, contrast, and fast load times.</p>
+            <h6 style="color:var(--accent);">পাঠক-প্রথম</h6>
+            <p style="color:var(--muted);">পরিষ্কার টাইপোগ্রাফি, কনট্রাস্ট আর দ্রুত লোড টাইমের জন্য তৈরি পাঠযোগ্য ভিউ।</p>
           </div>
         </div>
         <div class="col-md-4 mt-3">
           <div class="post-card">
-            <h6 style="color:var(--accent);">Simple editor</h6>
-            <p style="color:var(--muted);">Markdown-ready editor with preview and quick image uploads.</p>
+            <h6 style="color:var(--accent);">সহজ এডিটর</h6>
+            <p style="color:var(--muted);">Markdown-সাপোর্টেড এডিটর যেখানে আছে প্রিভিউ ও দ্রুত ছবি আপলোড।</p>
           </div>
         </div>
         <div class="col-md-4 mt-3">
           <div class="post-card">
-            <h6 style="color:var(--accent);">Community</h6>
-            <p style="color:var(--muted);">Follow authors, like posts, and build your reading list.</p>
+            <h6 style="color:var(--accent);">কমিউনিটি</h6>
+            <p style="color:var(--muted);">লেখককে ফলো করুন, পোস্ট লাইক দিন, আর নিজের রিডিং লিস্ট তৈরি করুন।</p>
           </div>
         </div>
       </div>
@@ -136,11 +109,11 @@
   <footer class="bg-transparent mt-4">
     <div class="container d-flex justify-content-between align-items-center flex-wrap">
       <div>
-        <strong>GipuPress</strong> — Crafted for storytellers.<br>
-        <small>Created by Nazmul Hamim</small>
+        <strong>GipuPress</strong> — Created for storyteller<br>
+        <small>Created By Nazmul Hamim</small>
       </div>
       <div class="text-end small">
-        © <span id="year"></span> GipuPress • <a href="#" style="color:var(--muted); text-decoration:underline;">Privacy</a> • <a href="#" style="color:var(--muted); text-decoration:underline;">Terms</a>
+        © <span id="year"></span> GipuPress • <a href="#" style="color:var(--muted); text-decoration:underline;">প্রাইভেসি</a> • <a href="#" style="color:var(--muted); text-decoration:underline;">টার্মস</a>
       </div>
     </div>
   </footer>
@@ -148,15 +121,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', function(e){
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
-      });
-    });
-    window.addEventListener('keydown', e=>{
-      if(e.key === 'Tab') document.body.classList.add('user-is-tabbing');
-    });
   </script>
 </body>
 </html>
