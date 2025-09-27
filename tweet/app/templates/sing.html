@@ -54,6 +54,7 @@
   <main class="d-flex align-items-center justify-content-center" style="padding-top:8rem;padding-bottom:3rem;">
     <div class="form-card w-100">
       <h2 class="mb-4 text-center" style="color:var(--accent);font-weight:700;">Create Your Account</h2>
+      <h1 class="text-center text-danger">{{error}}</h1>
       <p id="demo" class="text-center"></p>
       <form id="signupForm" method="POST"  enctype="multipart/form-data" novalidate>
           {% csrf_token %}
